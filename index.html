@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Claude Code Starter Kit — Vibe Coding School</title>
+<meta name="description" content="Every Claude Code trick from Vibe Coding School on one page: what it fixes and the exact command. By @noob.vibecodes.">
+<meta property="og:title" content="Claude Code Starter Kit">
+<meta property="og:description" content="15 Claude Code tricks for beginners — what each one fixes and the exact command.">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#141413">
+<style>
+  :root {
+    --bg: #141413;
+    --card: #1f1e1d;
+    --line: #2e2d2b;
+    --text: #f0eee6;
+    --muted: #a3a09a;
+    --accent: #d97757;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 28px 18px calc(40px + env(safe-area-inset-bottom));
+  }
+  main { max-width: 560px; margin: 0 auto; }
+  .tag {
+    display: inline-block;
+    font: 600 12px/1 ui-monospace, "SF Mono", Menlo, monospace;
+    letter-spacing: .08em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 6px 8px;
+  }
+  h1 { font-size: 30px; line-height: 1.15; margin: 16px 0 10px; letter-spacing: -.01em; }
+  .lead { color: var(--muted); }
+  .sec { margin-top: 30px; font: 600 13px/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; }
+  ol { list-style: none; }
+  .item {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .num { font: 600 13px ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent); }
+  h2 { font-size: 19px; line-height: 1.3; margin: 2px 0 6px; }
+  .pain { color: var(--muted); font-size: 15px; font-style: italic; margin-bottom: 6px; }
+  .item ul { list-style: none; margin-top: 4px; }
+  .item li + li { margin-top: 8px; }
+  .item li { color: #d6d3cb; font-size: 16px; padding-left: 14px; position: relative; }
+  .item li::before { content: "→"; position: absolute; left: -2px; color: var(--accent); font-size: 14px; }
+  .note { color: var(--muted); font-size: 14px; margin-top: 8px; }
+  code {
+    font: 14px ui-monospace, "SF Mono", Menlo, monospace;
+    background: #2a2927; color: var(--text);
+    border-radius: 5px; padding: 1px 6px; overflow-wrap: anywhere;
+    cursor: pointer;
+  }
+  .cta { margin-top: 28px; text-align: center; }
+  .cta p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .btn {
+    display: block; width: 100%;
+    font: 600 17px/1 inherit; font-family: inherit;
+    padding: 16px; border-radius: 12px; border: 0;
+    text-decoration: none; cursor: pointer; text-align: center;
+  }
+  .btn-main { background: var(--accent); color: #fff; }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); margin-top: 10px; }
+  .foot { margin-top: 26px; text-align: center; font-size: 13px; color: #6f6c66; }
+  .toast {
+    position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom));
+    transform: translateX(-50%) translateY(20px); opacity: 0;
+    background: var(--text); color: var(--bg);
+    padding: 10px 16px; border-radius: 10px; font-size: 15px;
+    transition: .2s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">VIBE CODING SCHOOL · STARTER KIT</span>
+  <h1>Claude Code Starter Kit</h1>
+  <p class="lead">Every trick from our lessons on one page: what it fixes and the exact command. Tap any command to copy it. New lessons get added here.</p>
+
+  <p class="sec">Set up once</p>
+  <ol>
+    <li class="item">
+      <span class="num">01</span>
+      <h2>CLAUDE.md — project rules</h2>
+      <p class="pain">Explaining your project in every new chat?</p>
+      <ul>
+        <li><code>/init</code> — Claude drafts it for you: stack, what not to touch, how to run tests</li>
+        <li>edit with <code>/memory</code> or by hand</li>
+        <li>for every project: <code>~/.claude/CLAUDE.md</code>; personal rules: <code>CLAUDE.local.md</code></li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">02</span>
+      <h2>Skills</h2>
+      <p class="pain">Explaining the same thing to AI every time?</p>
+      <ul>
+        <li>a skill = a folder with a <code>SKILL.md</code>: name, when to use it, instructions</li>
+        <li>Claude opens the right one itself, or call it: <code>/skill-name</code></li>
+        <li>easiest start: tell Claude <code>Make a skill from this chat</code></li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">03</span>
+      <h2>Plugins</h2>
+      <p class="pain">Why do all Claude sites look the same?</p>
+      <ul>
+        <li><code>/plugin</code> → Discover tab → search <code>frontend-design</code> → Install for you</li>
+        <li>ask for the site again — no more template look</li>
+        <li>Claude Desktop: + next to the prompt box → Plugins → Add plugin</li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">04</span>
+      <h2>MCP — connect your apps</h2>
+      <p class="pain">Claude can't see your calendar, Notion, email?</p>
+      <ul>
+        <li>Claude Desktop / claude.ai: Settings → Connectors → Add custom connector</li>
+        <li>Claude Code: <code>claude mcp add --transport http notion https://mcp.notion.com/mcp</code></li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">05</span>
+      <h2>Learning mode</h2>
+      <p class="pain">Can't explain your own code?</p>
+      <ul>
+        <li><code>/output-style</code> → Learning</li>
+        <li>Claude explains every step and leaves a <code>TODO(human)</code> for you to write</li>
+        <li>Claude Desktop: <code>"outputStyle": "Learning"</code> in <code>.claude/settings.local.json</code></li>
+      </ul>
+    </li>
+  </ol>
+
+  <p class="sec">Every session</p>
+  <ol>
+    <li class="item">
+      <span class="num">06</span>
+      <h2>Plan mode</h2>
+      <p class="pain">Asked for a button — it rewrote half your app?</p>
+      <ul>
+        <li><code>Shift+Tab</code> until <b>⏸ plan mode on</b></li>
+        <li>Claude reads the project, proposes a plan, changes nothing until you approve</li>
+        <li>Claude Desktop: mode selector next to Send → Plan</li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">07</span>
+      <h2>Context: /context, /compact, /clear</h2>
+      <p class="pain">Claude forgets what you agreed on by the end of a long chat?</p>
+      <ul>
+        <li><code>/context</code> — see what's eating the space</li>
+        <li><code>/compact keep the db schema</code> — squeeze history, protect what matters</li>
+        <li><code>/clear</code> — a clean chat for a new task</li>
+      </ul>
+      <p class="note">Rule of thumb: /clear between tasks, /compact inside one.</p>
+    </li>
+    <li class="item">
+      <span class="num">08</span>
+      <h2>/goal — make it finish</h2>
+      <p class="pain">Claude said “done” — half the site is missing?</p>
+      <ul>
+        <li><code>/goal the form submits and all tests pass</code></li>
+        <li>after every turn a fast model checks the condition; not met — Claude keeps going</li>
+        <li><code>/goal clear</code> to remove it</li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">09</span>
+      <h2>/rewind — undo</h2>
+      <p class="pain">Fixed one button, broke the site?</p>
+      <ul>
+        <li><code>Esc Esc</code> or <code>/rewind</code> → pick the prompt where it broke → Restore code</li>
+        <li>checkpoints last about 30 days</li>
+      </ul>
+      <p class="note">Can't undo terminal commands (rm, mv) or your manual edits — keep git for those.</p>
+    </li>
+    <li class="item">
+      <span class="num">10</span>
+      <h2>Bring back an old chat</h2>
+      <p class="pain">Rebooted and yesterday's chat is gone? It's not.</p>
+      <ul>
+        <li><code>claude -c</code> — continue the last chat in this folder</li>
+        <li><code>/resume</code> — pick any past chat</li>
+        <li><code>/rename cart & checkout</code> — so it's easy to find later</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p class="sec">Let it work on its own</p>
+  <ol>
+    <li class="item">
+      <span class="num">11</span>
+      <h2>Auto mode</h2>
+      <p class="pain">Hitting “yes” 30 times?</p>
+      <ul>
+        <li><code>Shift+Tab</code> until <b>⏵⏵ auto mode on</b></li>
+        <li>safe stuff runs itself; risky stuff (rm -rf, force push) gets checked and blocked</li>
+        <li>needs Opus 4.6+ or Sonnet 4.6+; tune it in <code>/permissions</code></li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">12</span>
+      <h2>Sandbox</h2>
+      <p class="pain">Scared to leave Claude alone?</p>
+      <ul>
+        <li><code>/sandbox</code> — commands stay inside the project folder</li>
+        <li>a strange site — it asks first</li>
+        <li>macOS, Linux, WSL2</li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">13</span>
+      <h2>Claude in the cloud</h2>
+      <p class="pain">Left a task overnight, closed the laptop — nothing done?</p>
+      <ul>
+        <li>claude.ai/code → pick your GitHub repo → type the task</li>
+        <li>or from the terminal: <code>claude --cloud "task"</code></li>
+        <li>by morning: a branch and a pull request. Pro, Max, Team</li>
+      </ul>
+    </li>
+    <li class="item">
+      <span class="num">14</span>
+      <h2>Routines — on a schedule</h2>
+      <p class="pain">Checking your site and leads every morning?</p>
+      <ul>
+        <li>Claude app: Code → Routines → New routine → Local</li>
+        <li>tell it what to check, set Daily 9:00 AM</li>
+      </ul>
+      <p class="note">Runs while your laptop's on and the Claude app is open.</p>
+    </li>
+    <li class="item">
+      <span class="num">15</span>
+      <h2>Claude tests your site in Chrome</h2>
+      <p class="pain">“Done” — but the button doesn't work?</p>
+      <ul>
+        <li><code>claude --chrome</code> + the Claude in Chrome extension</li>
+        <li><code>open localhost:3000, click Book now, check the console</code></li>
+        <li>always on: <code>/chrome</code> → Enabled by default. Pro, Max, Team, Enterprise</li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="cta">
+    <p>A new trick every day — follow so you don't miss it.</p>
+    <a class="btn btn-main" href="https://www.instagram.com/noob.vibecodes/" target="_blank" rel="noopener">@noob.vibecodes on Instagram</a>
+    <button class="btn btn-ghost" id="share">Send to a friend</button>
+  </div>
+
+  <p class="foot">Noob &amp; Pro · Vibe Coding School</p>
+</main>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+  const toast = s => { const t = document.getElementById('toast'); t.textContent = s; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 1800); };
+  document.querySelectorAll('code').forEach(c => c.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(c.textContent);
+    toast('Copied');
+  }));
+  document.getElementById('share').addEventListener('click', async () => {
+    const data = { title: document.title, text: 'Claude Code Starter Kit — 15 tricks for beginners', url: location.href };
+    if (navigator.share) { try { await navigator.share(data); } catch (e) {} return; }
+    await navigator.clipboard.writeText(location.href);
+    toast('Link copied');
+  });
+</script>
+</body>
+</html>
